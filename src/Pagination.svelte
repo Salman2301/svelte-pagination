@@ -87,11 +87,11 @@
 
 <div class="pagination" >
 	
-	<p class="btn backward"  on:click={decSlot} >
+	<p class="btn backward"  on:click={decSlot} class:disable={currPage===1} >
 		{fastBackwardArrow}
 	</p >
 	
-	<p class="btn backward" on:click={decPage}>
+	<p class="btn backward" on:click={decPage} class:disable={currPage===1}>
 		{backwardArrow}
 	</p>
 	
@@ -108,10 +108,10 @@
 	</div>
 	
 	
-	<p class="btn forward"  on:click={incPage} >
+	<p class="btn forward"  on:click={incPage} class:disable={currPage===ttlPage}>
 		{forwardArrow}
 	</p >
-	<p class="btn forward"  on:click={incSlot} >
+	<p class="btn forward"  on:click={incSlot} class:disable={currPage===ttlPage} >
 		{fastForwardArrow}
 	</p >
 	
@@ -137,6 +137,15 @@
 		margin: 0px 5px;
 		cursor: pointer;
 		padding-top: 2px;
+
+		
+		-webkit-touch-callout: none; /* iOS Safari */
+		-webkit-user-select: none; /* Safari */
+		-khtml-user-select: none; /* Konqueror HTML */
+		-moz-user-select: none; /* Old versions of Firefox */
+		-ms-user-select: none; /* Internet Explorer/Edge */
+		user-select: none; /* Non-prefixed version, currently
+		supported by Chrome, Opera and Firefox */
 	}
 	
 	.btns {
@@ -165,4 +174,9 @@
 		color: white;
 		border-color: black;
 	}
+
+	.disable {
+		cursor: no-drop;
+	}
+
 </style>
