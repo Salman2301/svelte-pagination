@@ -14,7 +14,7 @@
 	// dispatch on current page change
 	$: dispatch("currPage", currPage );
 	
-
+	let primaryColor = "#3c89d0";
 
 	let forwardArrow = ">";
 	let backwardArrow = "<";
@@ -54,13 +54,9 @@
 		if( newPage > ttlPage ) newPage = ttlPage;
 
 		currPage = newPage;
-		
-		if(
-			currPage < startPage+maxPage + 4
-			&& startPage+maxPage + 4 <= ttlPage
-		) {
+		if(currPage >  startPage + maxPage - 1) {
 			startPage+=5;
-			if(startPage + maxPage > ttlPage)	startPage = ttlPage - maxPage + 1;
+			if(startPage > ttlPage - maxPage)	startPage = ttlPage - maxPage + 1;
 		}
 	}
 	
@@ -150,8 +146,12 @@
 	}
 	
 	.active {
-		background: #eee;
+		background: #3c89d0;
+		color: white;
+		border-color: #3c89d0;
 	}
+
+	
 	
 	.forward, .backward {
 		background: #eee;
@@ -159,5 +159,10 @@
 	
 	.btn:hover {
 		background: #eee;
+	}
+	.active:hover {
+		background: #3c89d0;
+		color: white;
+		border-color: black;
 	}
 </style>

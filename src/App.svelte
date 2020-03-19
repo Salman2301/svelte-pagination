@@ -1,6 +1,6 @@
 <script>
 	import Pagination from "./Pagination.svelte";
-	let ttlPage = 10;
+	let ttlPage = 20;
 	
 	const handleCurrPage = e =>{
 		console.log("currPage :", e.detail );
