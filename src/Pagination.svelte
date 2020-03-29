@@ -7,15 +7,15 @@
 	export let ttlPage = 10;
 	export let maxPage = 5;
 	export let currPage = startPage;
-
+	export let colorPrimary = "#3c89d0";
+	export let colorHover = "#eee"
+	
 	$: endPage = startPage + ttlPage -1;
 	$:  arr =	buildArr(startPage, ttlPage, endPage);
 
 	// dispatch on current page change
 	$: dispatch("currPage", currPage );
 	
-	let primaryColor = "#3c89d0";
-
 	let forwardArrow = ">";
 	let backwardArrow = "<";
 	let fastForwardArrow = ">>";
@@ -85,7 +85,7 @@
 </script>
 
 
-<div class="pagination" >
+<div class="pagination" style="--color-primary:{colorPrimary};	--color-hover:{colorHover}">
 	
 	<p class="btn backward"  on:click={decSlot} class:disable={currPage===1} >
 		{fastBackwardArrow}
@@ -118,6 +118,10 @@
 </div>
 
 <style>
+	:root {
+		--color-primary : #3c89d0;
+		--color-hover : #eee;
+	}
 	.pagination {
 		display: flex;
 		width: 400px;
@@ -155,9 +159,9 @@
 	}
 	
 	.active {
-		background: #3c89d0;
+		background: var(--color-primary);
 		color: white;
-		border-color: #3c89d0;
+		border-color: var(--color-primary);
 	}
 
 	
@@ -167,10 +171,10 @@
 	}
 	
 	.btn:hover {
-		background: #eee;
+		background: var(--color-hover);
 	}
 	.active:hover {
-		background: #3c89d0;
+		background: var(--color-primary);
 		color: white;
 		border-color: black;
 	}
@@ -180,3 +184,4 @@
 	}
 
 </style>
+
